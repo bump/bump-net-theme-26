@@ -10,15 +10,12 @@ Custom Hugo theme for [bump.net](https://bump.net), hosted on [Micro.blog](https
 bump-net-theme-26/
 ├── theme.toml                  # Theme metadata (name, Hugo min version)
 ├── config.json                 # Site params (tagline, since_year)
-├── README.md
 ├── layouts/
 │   ├── index.html              # Homepage (Log Box + sidebar)
 │   ├── _default/
 │   │   ├── single.html         # Individual blog post pages
 │   │   ├── list.html           # Archive listing page
-│   │   └── page.html           # Fallback static page template
-│   ├── page/
-│   │   └── single.html         # Static pages created via Micro.blog Pages (About, etc.)
+│   │   └── page.html           # Static pages (About, etc.)
 │   └── partials/
 │       ├── head.html           # <head> tag — meta, CSS, IndieWeb links
 │       ├── header.html         # Site header — logo and nav
@@ -33,8 +30,17 @@ bump-net-theme-26/
 
 ## Making Changes
 
-After editing any file in BBEdit, open Terminal and run:
+### Important: How Micro.blog uses this repo
 
+Micro.blog cloned this repo once when the theme was created and keeps its **own internal copy** of the files. Pushing to GitHub does **not** automatically update what Micro.blog builds from. You need to update files in two places:
+
+**1. Update Micro.blog (required for changes to go live):**
+- Go to **Micro.blog → Design → Open Theme: Bump 2003 Redux**
+- Click the file you want to edit in the left sidebar
+- Paste in the updated content and click **Update Template**
+- Then go back to **Design** and click **Update Design** to rebuild the site
+
+**2. Keep GitHub in sync (recommended, for backup and version history):**
 ```bash
 cd ~/Documents/bump-net-theme-26
 git add .
@@ -42,7 +48,7 @@ git commit -m "Brief description of what you changed"
 git push origin main
 ```
 
-Then go to **Micro.blog → Design → Update Design** to trigger a rebuild.
+For small frequent changes like the blogroll or Currently box, you can skip BBEdit/GitHub entirely and just edit directly in the Micro.blog theme editor — it's faster.
 
 ---
 
