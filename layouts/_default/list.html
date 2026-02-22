@@ -11,29 +11,34 @@
     <!-- ARCHIVE LIST -->
     <main class="panel log-box">
       <div class="panel-header">
-        <span class="panel-label">{{ if .Title }}{{ .Title }}{{ else }}Archives{{ end }}</span>
+        <span class="panel-label">Archives</span>
       </div>
       <div class="log-box-inner">
 
-        {{ $pages := where .Site.RegularPages "Type" "post" }}
+        {{ $pages := .Site.RegularPages }}
 
         {{ range $pages.GroupByDate "2006" }}
         <div class="day-group">
+
+          <!-- Year heading -->
           <div class="post-date-heading">{{ .Key }}</div>
 
-          {{ range .Pages.GroupByDate "January" }}
-          <div style="margin-bottom: 14px;">
-            <div style="font-family: var(--font-ui); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 6px; text-transform: uppercase;">
-              {{ .Key }}
-            </div>
+          {{ range .Pages.GroupByDate "January 2006" }}
+          <div class="archive-month-group">
+
+            <!-- Month subheading -->
+            <div class="archive-month-label">{{ .Key | dateFormat "January" }}</div>
+
+            <!-- Posts in this month -->
             {{ range .Pages }}
-            <div class="entry-timestamp" style="text-align:left; margin-bottom: 4px;">
-              {{ .Date.Format "Jan 2" }} —
-              <a href="{{ .Permalink }}" style="color: var(--lime); font-size: 11px;">
-                {{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 60 }}{{ end }}
+            <div class="archive-entry">
+              <span class="archive-entry-date">{{ .Date.Format "Jan 2" }}</span>
+              <a href="{{ .Permalink }}">
+                {{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 80 }}{{ end }}
               </a>
             </div>
             {{ end }}
+
           </div>
           {{ end }}
 

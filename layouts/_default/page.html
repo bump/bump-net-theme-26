@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{{ partial "head.html" . }}</head>
+<body>
+
+{{ partial "header.html" . }}
+
+<div class="site-wrapper">
+  <div class="content-area">
+
+    <!-- PAGE CONTENT -->
+    <main class="panel">
+      <div class="panel-header">
+        <span class="panel-label">{{ .Title }}</span>
+      </div>
+      <article class="single-post">
+
+        <div class="post-content">
+          {{ .Content }}
+        </div>
+
+      </article>
+    </main>
+
+    {{ partial "sidebar.html" . }}
+
+  </div><!-- /content-area -->
+
+  {{ partial "footer.html" . }}
+</div><!-- /site-wrapper -->
+
+</body>
+</html>

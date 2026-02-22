@@ -262,6 +262,51 @@ img           { max-width: 100%; height: auto; display: block; }
 .older-posts-link a:hover { color: var(--lime); text-decoration: none; }
 
 /* ============================================================
+   ARCHIVE PAGE
+   ============================================================ */
+.archive-month-group {
+  margin-bottom: 16px;
+}
+
+.archive-month-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted #2a2a2a;
+}
+
+.archive-entry {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 3px 0;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.archive-entry-date {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 36px;
+}
+
+.archive-entry a {
+  color: var(--lime);
+}
+
+.archive-entry a:hover {
+  color: var(--lime-bright);
+}
+
+/* ============================================================
    SINGLE POST PAGE
    ============================================================ */
 .single-post {
