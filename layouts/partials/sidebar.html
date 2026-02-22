@@ -46,40 +46,34 @@
     </div>
   </div>
 
-  <!-- PICTURE BOX — moved above archives, shows most recent post image -->
-  {{ $latestWithImage := "" }}
-  {{ range .Site.RegularPages }}
-    {{ if and (eq $latestWithImage "") (.Params.images) }}
-      {{ $latestWithImage = index .Params.images 0 }}
-    {{ end }}
-  {{ end }}
-  {{ if $latestWithImage }}
+  <!-- PICTURE BOX
+       Update the src URL below to change the displayed photo -->
   <div class="panel">
     <div class="panel-header"><span class="panel-label">Picture Box</span></div>
     <div class="picture-box-inner">
-      <img src="{{ $latestWithImage }}" alt="Recent photo">
+      <img src="https://cdn.uploads.micro.blog/554/2025/3367668908.jpg" alt="Recent photo">
     </div>
   </div>
-  {{ end }}
 
   <!-- ARCHIVES
-       Shows months for the last 2 years, years for everything older -->
+       Shows months for the last 2 years, years for everything older.
+       Update $cutoffYear when the calendar year changes. -->
   <div class="panel">
     <div class="panel-header"><span class="panel-label">Archives</span></div>
     <div class="archives-inner">
 
-      {{ $cutoff := now.AddDate -2 0 0 }}
+      {{ $cutoffYear := 2024 }}
 
-      {{/* Recent months — last 2 years */}}
+      {{/* Recent months — 2025 and newer */}}
       {{ range (.Site.RegularPages.GroupByDate "January 2006") }}
-        {{ if gt (.Pages.First.Date) $cutoff }}
+        {{ if ge (.Pages.First.Date.Year) $cutoffYear }}
           <a href="{{ $.Site.BaseURL }}{{ .Key | lower | replaceRE " " "-" }}/">{{ .Key }}</a>
         {{ end }}
       {{ end }}
 
       {{/* Older entries — one link per year */}}
       {{ range (.Site.RegularPages.GroupByDate "2006") }}
-        {{ if not (gt (.Pages.First.Date) $cutoff) }}
+        {{ if lt (int .Key) $cutoffYear }}
           <a href="{{ $.Site.BaseURL }}{{ .Key }}/">{{ .Key }}</a>
         {{ end }}
       {{ end }}
