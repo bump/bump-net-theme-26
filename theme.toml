@@ -1,0 +1,13 @@
+name = "bump-net-theme"
+license = "MIT"
+licenselink = ""
+description = "Custom theme for bump.net — 2003 revival"
+homepage = "https://bump.net"
+min_version = "0.91"
+
+[author]
+  name = "bump"
+  homepage = "https://bump.net"
+
+[features]
+  custom_css = true
