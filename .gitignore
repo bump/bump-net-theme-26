@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Hugo build output
+public/
+resources/
+
+# Hugo lock file
+.hugo_build.lock
+
+# Node (if you ever add tooling later)
+node_modules/
