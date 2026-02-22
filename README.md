@@ -10,12 +10,15 @@ Custom Hugo theme for [bump.net](https://bump.net), hosted on [Micro.blog](https
 bump-net-theme-26/
 ├── theme.toml                  # Theme metadata (name, Hugo min version)
 ├── config.json                 # Site params (tagline, since_year)
+├── README.md
 ├── layouts/
 │   ├── index.html              # Homepage (Log Box + sidebar)
 │   ├── _default/
 │   │   ├── single.html         # Individual blog post pages
 │   │   ├── list.html           # Archive listing page
-│   │   └── page.html           # Static pages (About, etc.)
+│   │   └── page.html           # Fallback static page template
+│   ├── page/
+│   │   └── single.html         # Static pages created via Micro.blog Pages (About, etc.)
 │   └── partials/
 │       ├── head.html           # <head> tag — meta, CSS, IndieWeb links
 │       ├── header.html         # Site header — logo and nav
