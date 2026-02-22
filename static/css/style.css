@@ -1,0 +1,491 @@
+/* ============================================================
+   bump.net — custom theme
+   2003 palette faithfully restored
+
+   Source colors from original bump.net CSS:
+     Body bg:      #666666
+     Panel bg:     #000000
+     Lime green:   #66cc33  (dates, links, accents)
+     Body text:    #cccccc
+     Header bg:    #2e2e2e
+   ============================================================ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Roboto+Mono:wght@400;500;700&display=swap');
+
+/* ============================================================
+   CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --bg:            #5a5a5a;
+  --panel:         #0a0a0a;
+  --panel-border:  #2a2a2a;
+  --header-bg:     #2e2e2e;
+
+  --lime:          #66cc33;
+  --lime-dim:      #4a9922;
+  --lime-bright:   #88ee44;
+
+  --text:          #cccccc;
+  --text-muted:    #888888;
+  --text-bright:   #e8e8e8;
+
+  --link:          #66cc33;
+  --link-hover:    #88ee44;
+  --link-visited:  #4a9922;
+
+  --section-label: #999999;
+
+  --font-body:     Georgia, 'Times New Roman', serif;
+  --font-ui:       'Roboto Mono', 'Courier New', monospace;
+  --font-pixel:    'Pixelify Sans', monospace;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+
+body {
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a             { color: var(--link); text-decoration: none; }
+a:hover       { color: var(--link-hover); text-decoration: underline; }
+a:visited     { color: var(--link-visited); }
+img           { max-width: 100%; height: auto; display: block; }
+
+/* ============================================================
+   LAYOUT WRAPPER
+   ============================================================ */
+.site-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 12px 24px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  background: var(--header-bg);
+  border-bottom: 2px solid var(--lime);
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 12px 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.logo-bump {
+  font-family: var(--font-pixel);
+  font-size: 3rem;
+  font-weight: 600;
+  color: #d8d8d8;
+  letter-spacing: 10px;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.logo-tagline {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  padding-bottom: 4px;
+}
+
+.header-nav a {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+
+.header-nav a:hover {
+  color: var(--lime);
+  text-decoration: none;
+}
+
+/* ============================================================
+   TWO-COLUMN LAYOUT
+   ============================================================ */
+.content-area {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: start;
+}
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+.panel {
+  background: var(--panel);
+  border: 1px solid #1e1e1e;
+}
+
+.panel-header {
+  border-bottom: 1px solid #1e1e1e;
+  padding: 6px 14px;
+  text-align: center;
+}
+
+.panel-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--section-label);
+}
+
+/* ============================================================
+   LOG BOX — main posts column
+   ============================================================ */
+.log-box-inner {
+  padding: 16px 18px;
+}
+
+.day-group {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.day-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Date heading — bold lime Georgia, matching original */
+.post-date-heading {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--lime);
+  margin-bottom: 14px;
+}
+
+.entry {
+  margin-bottom: 18px;
+}
+
+.entry:last-child { margin-bottom: 0; }
+
+.entry-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.entry-title a        { color: var(--lime); }
+.entry-title a:hover  { color: var(--lime-bright); text-decoration: underline; }
+
+/* Body text — Verdana 12px justified, matching original .maintext */
+.entry-body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: var(--text);
+  text-align: justify;
+  line-height: 1.65;
+}
+
+.entry-body p              { margin-bottom: 10px; }
+.entry-body p:last-child   { margin-bottom: 0; }
+.entry-body a              { color: var(--lime); }
+.entry-body a:hover        { color: var(--lime-bright); }
+
+.entry-body blockquote {
+  border-left: 2px solid var(--lime-dim);
+  padding: 6px 12px;
+  color: #aaaaaa;
+  font-style: italic;
+  margin: 8px 0;
+}
+
+.entry-body img {
+  margin-top: 10px;
+  border: 1px solid #1e1e1e;
+  max-height: 300px;
+  width: auto;
+  filter: saturate(0.8) brightness(0.9);
+  transition: filter 0.2s;
+}
+
+.entry-body img:hover {
+  filter: saturate(1) brightness(1);
+}
+
+/* Timestamp — Arial 10px right-aligned, matching original .timestamp */
+.entry-timestamp {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 4px;
+}
+
+.entry-timestamp a       { color: var(--text-muted); font-size: 10px; }
+.entry-timestamp a:hover { color: var(--lime); text-decoration: none; }
+
+.older-posts-link {
+  padding: 12px 18px;
+  border-top: 1px solid #1a1a1a;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  text-align: right;
+  color: var(--text-muted);
+}
+
+.older-posts-link a       { color: var(--text-muted); }
+.older-posts-link a:hover { color: var(--lime); text-decoration: none; }
+
+/* ============================================================
+   SINGLE POST PAGE
+   ============================================================ */
+.single-post {
+  padding: 20px 18px;
+}
+
+.single-post .post-title {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--lime);
+  margin-bottom: 6px;
+}
+
+.single-post .post-date {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.single-post .post-content {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.65;
+  text-align: justify;
+}
+
+.single-post .post-content p          { margin-bottom: 14px; }
+.single-post .post-content a          { color: var(--lime); }
+.single-post .post-content a:hover    { color: var(--lime-bright); }
+.single-post .post-content blockquote {
+  border-left: 2px solid var(--lime-dim);
+  padding: 6px 12px;
+  color: #aaaaaa;
+  font-style: italic;
+  margin: 12px 0;
+}
+.single-post .post-content img {
+  margin: 14px 0;
+  border: 1px solid #1e1e1e;
+  filter: saturate(0.85) brightness(0.9);
+  transition: filter 0.2s;
+}
+.single-post .post-content img:hover { filter: saturate(1) brightness(1); }
+
+.single-post .post-nav {
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px solid #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.single-post .post-nav a       { color: var(--text-muted); }
+.single-post .post-nav a:hover { color: var(--lime); text-decoration: none; }
+
+/* ============================================================
+   RIGHT COLUMN
+   ============================================================ */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* About box */
+.about-box-inner {
+  padding: 12px 14px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.about-box-inner strong { color: var(--lime); }
+
+/* Currently box */
+.currently-inner { padding: 12px 14px; }
+
+.currently-row {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  border-bottom: 1px solid #181818;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+}
+
+.currently-row:last-child { border-bottom: none; }
+
+.currently-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lime-dim);
+  margin-bottom: 1px;
+}
+
+.currently-value {
+  color: var(--text);
+  font-size: 11px;
+}
+
+/* Link box / blogroll */
+.link-box-inner {
+  padding: 12px 14px;
+  columns: 2;
+  column-gap: 8px;
+}
+
+.blogroll-item {
+  display: block;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+  font-weight: bold;
+  color: var(--lime);
+  line-height: 1.6;
+  break-inside: avoid;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blogroll-item:hover   { color: var(--lime-bright); text-decoration: underline; }
+.blogroll-item:visited { color: var(--lime-dim); }
+
+/* Archives */
+.archives-inner {
+  padding: 10px 14px;
+  columns: 2;
+  column-gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+}
+
+.archives-inner a {
+  display: block;
+  color: var(--text-muted);
+  line-height: 1.9;
+  letter-spacing: 0.5px;
+}
+
+.archives-inner a:hover { color: var(--lime); text-decoration: none; }
+
+/* Picture box */
+.picture-box-inner { padding: 10px; }
+
+.picture-box-inner img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  filter: saturate(0.7) brightness(0.85);
+  transition: filter 0.25s;
+}
+
+.picture-box-inner img:hover { filter: saturate(1) brightness(1); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid #1e1e1e;
+  border-top: 2px solid var(--lime);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.site-footer a       { color: var(--text-muted); }
+.site-footer a:hover { color: var(--lime); }
+
+/* ============================================================
+   BLINKING CURSOR
+   ============================================================ */
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 12px;
+  background: var(--lime);
+  vertical-align: middle;
+  margin-left: 1px;
+  animation: blink 1s step-end infinite;
+  opacity: 0.8;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.8; }
+  50%       { opacity: 0; }
+}
+
+/* ============================================================
+   RESPONSIVE — collapse to single column on small screens
+   ============================================================ */
+@media (max-width: 680px) {
+  .content-area {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo-bump {
+    font-size: 2.2rem;
+    letter-spacing: 6px;
+  }
+}

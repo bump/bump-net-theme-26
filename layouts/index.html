@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="h-feed">
+<head>{{ partial "head.html" . }}</head>
+<body>
+
+{{ partial "header.html" . }}
+
+<div class="site-wrapper">
+  <div class="content-area">
+
+    <!-- LOG BOX -->
+    <main class="panel log-box">
+      <div class="panel-header">
+        <span class="panel-label">Log Box</span>
+      </div>
+      <div class="log-box-inner">
+
+        {{ $pages := where .Site.RegularPages "Type" "post" }}
+        {{ $paginator := .Paginate $pages 20 }}
+
+        {{ range $paginator.Pages.GroupByDate "January 2, 2006" }}
+        <div class="day-group">
+          <div class="post-date-heading">{{ .Key }}</div>
+
+          {{ range .Pages }}
+          <article class="entry h-entry">
+
+            {{ if .Title }}
+            <div class="entry-title">
+              <a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a>
+            </div>
+            {{ end }}
+
+            <div class="entry-body e-content">
+              {{ .Content }}
+            </div>
+
+            <div class="entry-timestamp">
+              <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Date.Format "3:04 PM" }}
+              </time>
+              <a href="{{ .Permalink }}" title="permalink">+</a>
+            </div>
+
+          </article>
+          {{ end }}
+
+        </div><!-- /day-group -->
+        {{ end }}
+
+      </div><!-- /log-box-inner -->
+
+      <!-- Pagination -->
+      <div class="older-posts-link">
+        {{ if $paginator.HasNext }}
+          <a href="{{ $paginator.Next.URL }}">older posts →</a>
+        {{ end }}
+      </div>
+
+    </main><!-- /log-box -->
+
+    {{ partial "sidebar.html" . }}
+
+  </div><!-- /content-area -->
+
+  {{ partial "footer.html" . }}
+</div><!-- /site-wrapper -->
+
+</body>
+</html>
