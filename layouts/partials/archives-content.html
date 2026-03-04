@@ -1,0 +1,127 @@
+<!-- BY DATE -->
+<div class="day-group">
+  <div class="post-date-heading">By Date</div>
+  <div class="archive-date-grid">
+    {{ $cutoffYear := 2024 }}
+    {{ range (.Site.RegularPages.GroupByDate "January 2006") }}
+      {{ if ge ((index .Pages 0).Date.Year) $cutoffYear }}
+        <div class="archive-entry">
+          <a href="{{ $.Site.BaseURL }}archives/{{ (index .Pages 0).Date | dateFormat "2006" }}/#{{ .Key | lower | replaceRE " " "-" }}">{{ .Key }}</a>
+        </div>
+      {{ end }}
+    {{ end }}
+    {{ range (.Site.RegularPages.GroupByDate "2006") }}
+      {{ if lt (int .Key) $cutoffYear }}
+        <div class="archive-entry">
+          <a href="{{ $.Site.BaseURL }}archives/{{ .Key }}/">{{ .Key }}</a>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+<!-- BY TOPIC: sorted alphabetically -->
+<div class="day-group">
+  <div class="post-date-heading">By Topic</div>
+  <div class="archive-topic-grid">
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/andy-baio/">andy baio</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/app/">app</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/apple/">Apple</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/apps/">Apps</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/argument/">argument</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/art/">art</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/atlanta/">Atlanta</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/band/">band</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/bennett/">bennett</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/blogging/">blogging</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/books/">Books</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/browser/">browser</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/bullet-journal/">bullet journal</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/burrito/">burrito</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/chrome/">chrome</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/clothes/">clothes</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/cocktails/">cocktails</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/codeagent/">codeagent</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/coffee/">Coffee</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/comics/">comics</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/conferences/">conferences</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/copyright/">copyright</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/dad/">dad</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/daring-fireball/">Daring Fireball</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/design/">Design</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/draplin/">draplin</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/edc/">edc</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/eleague/">ELEAGUE</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/enjoying/">enjoying</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/ereader/">ereader</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/esports/">esports</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/evernote/">evernote</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/extenstion/">extenstion</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/flow/">flow</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/food/">Food</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/gaming/">Gaming</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/gizmodo/">Gizmodo</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/google/">Google</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/gtd/">gtd</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/hobonichi-techo/">Hobonichi techo</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/holidays/">holidays</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/home-office/">Home Office</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/household/">household</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/housekeeping/">Housekeeping</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/humor/">humor</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/ios/">iOS</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/ipad/">iPad</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/iphone/">iPhone</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/leather/">leather</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/legacy-post/">legacy post</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/legal/">legal</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/link/">link</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/mac/">Mac</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/macworld/">MacWorld</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/marco/">Marco</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/mechkeys/">mechkeys</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/meta-blogging/">meta/blogging</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/movies/">movies</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/music/">music</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/nba/">NBA</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/notebooks/">notebooks</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/occhialini/">occhialini</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/old/">Old</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/pens/">pens</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/personal-technology/">Personal Technology</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/photo/">Photo</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/photography/">photography</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/phone/">phone</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/podcast/">podcast</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/product/">product</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/productivity/">productivity</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/red/">red</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/retina/">Retina</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/review/">review</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/rss/">RSS</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/shopping/">shopping</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/sneakers/">sneakers</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/social-media/">social media</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/sports/">Sports</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/star-wars/">Star Wars</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/stationary/">Stationary</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/streaming/">streaming</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/t-shirts/">t-shirts</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/tab/">tab</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/technology/">technology</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/the-verge/">The Verge</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/trello/">trello</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/uncategorized/">Uncategorized</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/video/">Video</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/wallpaper/">Wallpaper</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/watch/">watch</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/waxy-org/">waxy.org</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/weekly-bump/">Weekly Bump</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/whiskey/">whiskey</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/wirecutter/">Wirecutter</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/work/">work</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/world-surf-league/">World Surf League</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/wwdc/">WWDC</a></div>
+    <div class="archive-topic-entry"><a href="{{ .Site.BaseURL }}categories/xoxo/">xoxo</a></div>
+  </div>
+</div>

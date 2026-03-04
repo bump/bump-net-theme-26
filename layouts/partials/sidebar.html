@@ -40,7 +40,7 @@
       <a class="blogroll-item" href="https://om.co">Om Malik</a>
       <a class="blogroll-item" href="https://zeldman.com">Zeldman</a>
       <a class="blogroll-item" href="http://scripting.com">Scripting News</a>
-      <a class="blogroll-item wide" href="https://www.gentlemanstationer.com">Gentleman Stationer</a>
+<a class="blogroll-item wide" href="https://www.gentlemanstationer.com">Gentleman Stationer</a>
       <a class="blogroll-item" href="https://micro.blog">Micro.blog</a>
     </div>
   </div>
@@ -66,14 +66,14 @@
       {{/* Recent months - 2024 and newer */}}
       {{ range (.Site.RegularPages.GroupByDate "January 2006") }}
         {{ if ge ((index .Pages 0).Date.Year) $cutoffYear }}
-          <a href="{{ $.Site.BaseURL }}{{ .Key | lower | replaceRE " " "-" }}/">{{ .Key }}</a>
+         <a href="{{ $.Site.BaseURL }}archives/{{ (index .Pages 0).Date | dateFormat "2006" }}/#{{ .Key | lower | replaceRE " " "-" }}">{{ .Key }}</a>
         {{ end }}
       {{ end }}
 
       {{/* Older entries - one link per year */}}
       {{ range (.Site.RegularPages.GroupByDate "2006") }}
         {{ if lt (int .Key) $cutoffYear }}
-          <a href="{{ $.Site.BaseURL }}{{ .Key }}/">{{ .Key }}</a>
+			<a href="{{ $.Site.BaseURL }}archives/{{ .Key }}/">{{ .Key }}</a>
         {{ end }}
       {{ end }}
 
