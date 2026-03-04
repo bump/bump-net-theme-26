@@ -378,7 +378,9 @@ img           { max-width: 100%; height: auto; display: block; }
   columns: 2;
   column-gap: 8px;
 }
-
+.blogroll-item.wide {
+  column-span: all;
+}
 .blogroll-item {
   display: block;
   font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -387,6 +389,9 @@ img           { max-width: 100%; height: auto; display: block; }
   color: var(--lime);
   line-height: 1.6;
   break-inside: avoid;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .blogroll-item:hover   { color: var(--lime-bright); text-decoration: underline; }
