@@ -8,28 +8,22 @@
 <div class="site-wrapper">
   <div class="content-area">
 
-    <!-- ARCHIVE LIST -->
     <main class="panel log-box">
       <div class="panel-header">
         <span class="panel-label">Archives</span>
       </div>
       <div class="log-box-inner">
 
-        {{ $pages := .Site.RegularPages }}
-
-        {{ range $pages.GroupByDate "2006" }}
+        {{ range .Site.RegularPages.GroupByDate "2006" }}
         <div class="day-group">
 
-          <!-- Year heading -->
           <div class="post-date-heading">{{ .Key }}</div>
 
           {{ range .Pages.GroupByDate "January 2006" }}
           <div class="archive-month-group">
 
-            <!-- Month subheading -->
-            <div class="archive-month-label">{{ .Key | dateFormat "January" }}</div>
+            <div class="archive-month-label">{{ (index .Pages 0).Date.Format "January" }}</div>
 
-            <!-- Posts in this month -->
             {{ range .Pages }}
             <div class="archive-entry">
               <span class="archive-entry-date">{{ .Date.Format "Jan 2" }}</span>
@@ -50,10 +44,10 @@
 
     {{ partial "sidebar.html" . }}
 
-  </div><!-- /content-area -->
+  </div>
 
   {{ partial "footer.html" . }}
-</div><!-- /site-wrapper -->
+</div>
 
 </body>
 </html>
