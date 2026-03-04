@@ -12,14 +12,16 @@ bump-net-theme-26/
 ├── config.json                 # Site params (tagline, since_year)
 ├── layouts/
 │   ├── index.html              # Homepage (Log Box + sidebar)
+│   ├── page/
+│   │   └── single.html         # Static pages (About, year archives, etc.)
 │   ├── _default/
 │   │   ├── single.html         # Individual blog post pages
-│   │   ├── list.html           # Archive listing page
-│   │   └── page.html           # Static pages (About, etc.)
+│   │   └── list.html           # Archive listing page (categories, etc.)
 │   └── partials/
 │       ├── head.html           # <head> tag — meta, CSS, IndieWeb links
 │       ├── header.html         # Site header — logo and nav
 │       ├── sidebar.html        # Right rail — About, Currently, Link Box, Picture Box, Archives
+│       ├── archives-content.html  # By Date + By Topic content for /archives/ page
 │       └── footer.html         # Site footer
 └── static/
     └── css/
@@ -62,6 +64,33 @@ For small frequent changes like the blogroll or Currently box, you can skip BBEd
 | Footer text | `layouts/partials/footer.html` |
 | Site tagline / since year | `config.json` |
 | Any visual styles | `static/css/style.css` |
+| Archives By Date / By Topic lists | `layouts/partials/archives-content.html` |
+
+---
+
+## Year Archive Pages
+
+Year archive pages live at `/archives/YEAR/` (e.g. `bump.net/archives/2023/`) and are regular Micro.blog pages — not Hugo taxonomy pages.
+
+### How they work
+
+`layouts/page/single.html` checks the page's URL. If it matches `/archives/YYYY/`, it filters all posts to that year and displays them grouped by month in chronological order. Otherwise it renders normal page content.
+
+### Adding a new year
+
+When a new calendar year starts, create a new page in Micro.blog:
+
+1. Go to **Posts → Pages → New Page**
+2. Set **Title** to the year (e.g. `2027`)
+3. Set **Slug** to `archives/2027`
+4. Leave the body blank
+5. Click **Save**
+
+No template changes needed — the template detects the URL automatically.
+
+### Updating the sidebar cutoff year
+
+The sidebar shows individual months for recent years and a single year link for older ones. The cutoff is controlled by `$cutoffYear` in `layouts/partials/sidebar.html` and `layouts/partials/archives-content.html`. Update both when you want to change the threshold.
 
 ---
 

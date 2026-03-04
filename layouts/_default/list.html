@@ -10,29 +10,20 @@
 
     <main class="panel log-box">
       <div class="panel-header">
-        <span class="panel-label">Archives</span>
+        <span class="panel-label">{{ .Title }}</span>
       </div>
       <div class="log-box-inner">
 
-        {{ range .Site.RegularPages.GroupByDate "2006" }}
+        {{ range .Pages.GroupByDate "January 2006" }}
         <div class="day-group">
+          <div class="post-date-heading" id="{{ (index .Pages 0).Date.Format "january-2006" }}">{{ .Key }}</div>
 
-          <div class="post-date-heading">{{ .Key }}</div>
-
-          {{ range .Pages.GroupByDate "January 2006" }}
-          <div class="archive-month-group">
-
-            <div class="archive-month-label">{{ (index .Pages 0).Date.Format "January" }}</div>
-
-            {{ range .Pages }}
-            <div class="archive-entry">
-              <span class="archive-entry-date">{{ .Date.Format "Jan 2" }}</span>
-              <a href="{{ .Permalink }}">
-                {{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 80 }}{{ end }}
-              </a>
-            </div>
-            {{ end }}
-
+          {{ range .Pages }}
+          <div class="archive-entry">
+            <span class="archive-entry-date">{{ .Date.Format "Jan 2" }}</span>
+            <a href="{{ .Permalink }}">
+              {{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 80 }}{{ end }}
+            </a>
           </div>
           {{ end }}
 
