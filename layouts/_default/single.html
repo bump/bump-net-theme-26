@@ -8,51 +8,50 @@
 <div class="site-wrapper">
   <div class="content-area">
 
-    <main class="panel log-box">
+    <!-- SINGLE POST -->
+    <main class="panel">
       <div class="panel-header">
-        <span class="panel-label">{{ .Title }}</span>
+        <span class="panel-label">{{ if .Title }}{{ .Title }}{{ else }}Post{{ end }}</span>
       </div>
-      <div class="log-box-inner">
+      <article class="single-post h-entry">
 
-        {{ $url := .RelPermalink }}
-        {{ $isYearPage := $url | findRE `^/archives/\d{4}/?$` }}
+        {{ if .Title }}
+        <h1 class="post-title p-name">{{ .Title }}</h1>
+        {{ end }}
 
-        {{ if $isYearPage }}
-          {{ $year := $url | replaceRE `^/archives/(\d{4})/?$` "$1" | int }}
-          {{ $yearPages := where (where .Site.RegularPages "Type" "post") "Date.Year" $year }}
-          {{ if $yearPages }}
-			{{ range ($yearPages.GroupByDate "January 2006").Reverse }}
-            <div class="day-group">
-              <div class="post-date-heading" id="{{ .Key | lower | replaceRE " " "-" }}">{{ .Key }}</div>
-              {{ range .Pages }}
-              <div class="archive-entry">
-                <span class="archive-entry-date">{{ .Date.Format "Jan 2" }}</span>
-                <a href="{{ .Permalink }}">
-                  {{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 80 }}{{ end }}
-                </a>
-              </div>
-              {{ end }}
-            </div>
+        <div class="post-date">
+          <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ .Date.Format "January 2, 2006" }} · {{ .Date.Format "3:04 PM" }}
+          </time>
+        </div>
+
+        <div class="post-content e-content">
+          {{ .Content }}
+        </div>
+
+        <!-- Prev / Next navigation -->
+        <nav class="post-nav">
+          <span>
+            {{ with .PrevInSection }}
+              <a href="{{ .Permalink }}">← {{ if .Title }}{{ .Title }}{{ else }}previous{{ end }}</a>
             {{ end }}
-          {{ else }}
-            <p>No posts found for {{ $year }}.</p>
-          {{ end }}
+          </span>
+          <span>
+            {{ with .NextInSection }}
+              <a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}next{{ end }} →</a>
+            {{ end }}
+          </span>
+        </nav>
 
-{{ else if eq .RelPermalink "/archives/" }}
-  {{ partial "archives-content.html" . }}
-{{ else }}
-  <div class="post-body">{{ .Content }}</div>
-{{ end }}
-
-      </div>
+      </article>
     </main>
 
     {{ partial "sidebar.html" . }}
 
-  </div>
+  </div><!-- /content-area -->
 
   {{ partial "footer.html" . }}
-</div>
+</div><!-- /site-wrapper -->
 
 </body>
 </html>
